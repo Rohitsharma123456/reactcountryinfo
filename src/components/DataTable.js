@@ -13,17 +13,17 @@ const useStyles = makeStyles({
 
  const DataTable=(countrydata1)=> {
   const columns = [
-    { field: 'id', headerName: 'ID', width: 90 },
+    { field: 'id', headerName: 'ID', width: 150 },
     {
-      field: 'countryfeatures',
+      field: 'name',
       headerName: 'Country Features',
-      width: 250,
+      width: 300,
       editable: true,
     },
     {
       field: 'values',
       headerName: 'Values',
-      width: 150,
+      width:300 ,
       editable: true,
     },
     
@@ -32,18 +32,30 @@ const useStyles = makeStyles({
   
   const classes = useStyles();
   const arrayform=Object.values(countrydata1).flat();
-  const data=arrayform[0].data;
-  const datarows = data.map((item,index)=>{
-    return [index,item.name];
-  });
-  const countryfeatures=["alpha2Code","alpha3Code","area","borders","callingCodes","capital","currencies","demonym","flag","languages","name","nativeName","population","region","timezones"];
+  
+  const data=arrayform[0].data[0];
+ 
+  
+  // data.map((item,index)=>{
+  //   return {"id":index,"value":item.name};
+  // });
+  const countryfeatures=[
+  {"id":1,"name":"alpha2Code","values":data.alpha2Code},{"id":3,"name":"regionalBlocs","values":data.regionalBlocs[0].name},
+  {"id":2,"name":"alpha3Code","values":data.alpha3Code},{"id":4,"name":"subregion","values":data.subregion},
+  {"id":5,"name":"alpha2Code","values":data.alpha2Code},
+  {"id":6,"name":"capital","values":data.capital},{"id":7,"name":"currencies","values":data.currencies[0].code},
+  {"id":8,"name":"demonym","values":data.demonym},{"id":9,"name":"flag","values":data.flag},
+  {"id":10,"name":"languages","values":data.languages[0].name},{"id":11,"name":"name","values":data.name},
+  {"id":12,"name":"nativeName","values":data.nativeName},{"id":13,"name":"population","values":data.population},
+  {"id":14,"name":"region","values":data.region},{"id":15,"name":"timezones","values":data.timezones}];
+  
   return (
-    <div style={{ height: 400, width: '100%' }}>
+    <div style={{ height: 1000, width: 800 }}>
       <DataGrid
-        rows={datarows}
+        rows={countryfeatures}
         columns={columns}
-        pageSize={5}
-        checkboxSelection
+        pageSize={20}
+        
         disableSelectionOnClick
       />
     </div>
