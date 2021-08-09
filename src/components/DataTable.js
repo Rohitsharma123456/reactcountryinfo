@@ -34,15 +34,14 @@ const useStyles = makeStyles({
   const arrayform=Object.values(countrydata1).flat();
   
   const data=arrayform[0].data[0];
- 
+
   
-  // data.map((item,index)=>{
-  //   return {"id":index,"value":item.name};
-  // });
+ 
+ 
   const countryfeatures=[
-  {"id":1,"name":"alpha2Code","values":data.alpha2Code},{"id":3,"name":"regionalBlocs","values":data.regionalBlocs[0].name},
+  {"id":1,"name":"alpha2Code","values":data.alpha2Code},{"id":3,"name":"topLevelDomain","values":data.topLevelDomain[0]},
   {"id":2,"name":"alpha3Code","values":data.alpha3Code},{"id":4,"name":"subregion","values":data.subregion},
-  {"id":5,"name":"alpha2Code","values":data.alpha2Code},
+  
   {"id":6,"name":"capital","values":data.capital},{"id":7,"name":"currencies","values":data.currencies[0].code},
   {"id":8,"name":"demonym","values":data.demonym},{"id":9,"name":"flag","values":data.flag},
   {"id":10,"name":"languages","values":data.languages[0].name},{"id":11,"name":"name","values":data.name},

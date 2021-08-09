@@ -54,12 +54,12 @@ const Header=()=> {
     
     axios.get(url)
   .then(function (response) {
+    
     // handle success
+    if(response.status===200){
     setCountrydata(response);
     setFirsttime(false);
-    
-  
-   
+    }
   })
   .catch(function (error) {
     // handle error
@@ -67,23 +67,7 @@ const Header=()=> {
   });
   
   
-  const latestcurrences=`http://data.fixer.io/api/latest?access_key=ffab6836a40bbcac66dc6ab8fc89a6f8& symbols = USD,AUD,CAD,PLN,MXN`;
-  axios.get(latestcurrences)
-  .then(function (res) {
-    // handle success
-    const rates=res.data.rates
-    setCountrydata((prev)=>({
-      ...prev,[rates]:rates
-    }));
-    
-    
   
-   
-  })
-  .catch(function (error) {
-    // handle error
-    console.log(error);
-  });
 
 
 };
